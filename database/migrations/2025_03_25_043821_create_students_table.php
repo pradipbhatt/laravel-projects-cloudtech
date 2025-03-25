@@ -6,15 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateStudentsTable extends Migration
 {
+
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->id(); // Auto-increment primary key
-            $table->string('name'); // Name field
-            $table->string('email')->unique(); // Email field (unique)
-            $table->integer('age'); // Age field
-            $table->text('message'); // Message field
-            $table->timestamps(); // created_at and updated_at
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->integer('age');
+            $table->text('message');
+            $table->string('image')->nullable(); // Add image column
+            $table->timestamps();
         });
     }
 

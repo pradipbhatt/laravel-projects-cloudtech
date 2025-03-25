@@ -14,7 +14,7 @@
         @endif
 
         <!-- Form for student details -->
-        <form action="{{ route('student.submit') }}" method="POST" class="space-y-4">
+        <form action="{{ route('student.submit') }}" method="POST" class="space-y-4" enctype="multipart/form-data">
             @csrf <!-- CSRF Token for security -->
 
             <!-- Name field -->
@@ -49,6 +49,15 @@
                 <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
                 <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg" required>{{ old('message') }}</textarea>
                 @error('message')
+                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Image upload field -->
+            <div>
+                <label for="image" class="block text-sm font-medium text-gray-700">Your Image</label>
+                <input type="file" id="image" name="image" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                @error('image')
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
             </div>
